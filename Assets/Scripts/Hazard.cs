@@ -13,7 +13,7 @@ public class Hazard : MonoBehaviour
     private float spinTime = 1F;
 
     // Use this for initialization
-    protected void Start()
+    protected virtual void Start()
     {
         myCollider = GetComponent<Collider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -24,7 +24,7 @@ public class Hazard : MonoBehaviour
         if (collision.gameObject.GetComponent<Bullet>() != null)
         {
             //TODO: Make this to reduce damage using Bullet.damage attribute
-            resistance -= 1;
+            resistance -= collision.gameObject.GetComponent<Bullet>().Damage;
 
             if (resistance == 0)
             {

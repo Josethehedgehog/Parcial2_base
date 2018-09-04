@@ -16,6 +16,21 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float autoDestroyTime = 5F;
 
+    public int Damage
+    {
+        get
+        {
+            return damage;
+        }
+
+        set
+        {
+            damage = value;
+        }
+    }
+
+
+
     // Use this for initialization
     private void Start()
     {
@@ -30,6 +45,6 @@ public class Bullet : MonoBehaviour
     private void AutoDestroy()
     {
         Destroy(gameObject);
-        Destroy(gameObject);
+        
     }
 }
