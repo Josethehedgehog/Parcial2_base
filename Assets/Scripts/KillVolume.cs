@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class KillVolume : MonoBehaviour
 {
-    [SerializeField]
-    private Shelter[] shelters;
+    public Shelter[] shelters;
+    public Shelter shelter;
+
+    private void Start()
+    {
+        shelter = GetComponent<Shelter>();
+    }
+
+    private void Update()
+    {
+        
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -14,7 +25,12 @@ public class KillVolume : MonoBehaviour
                 if (shelters[i] != null)
                 {
                     print("Damaging a shelter");
+
                 }
+
+               
+
+
             }
         }
 

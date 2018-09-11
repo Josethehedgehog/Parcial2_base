@@ -7,14 +7,14 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private int damage = 1;
 
-    private Collider2D myCollider;
-    private Rigidbody2D myRigidbody;
+    protected Collider2D myCollider;
+    protected Rigidbody2D myRigidbody;
 
     [SerializeField]
-    private float force = 10F;
+    protected float force = 10F;
 
     [SerializeField]
-    private float autoDestroyTime = 5F;
+    protected float autoDestroyTime = 5F;
 
     public int Damage
     {
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
 
 
     // Use this for initialization
-    private void Start()
+    protected virtual void Start()
     {
         myCollider = GetComponent<Collider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -47,4 +47,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
         
     }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
+
+
 }

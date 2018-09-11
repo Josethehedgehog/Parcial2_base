@@ -1,23 +1,36 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Hazard : MonoBehaviour
 {
-    private Collider2D myCollider;
-    private object myRigidbody;
+    protected Collider2D myCollider;
+    protected Rigidbody2D myRigidbody;
 
     [SerializeField]
-    private float resistance = 1F;
+    protected float resistance = 1F;
 
-    private float spinTime = 1F;
+    protected float spinSpeed = 50F;
+
+    protected float t;
+
+    
+
+   
+
 
     // Use this for initialization
     protected virtual void Start()
     {
         myCollider = GetComponent<Collider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        
+        
+        spinSpeed = Random.Range(50, 100);
+
     }
+    
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
@@ -28,14 +41,34 @@ public class Hazard : MonoBehaviour
 
             if (resistance == 0)
             {
+                
                 OnHazardDestroyed();
             }
+
+            if (resistance < 0)
+                resistance = 0;
         }
+        
+        
+
+        if (collision.gameObject.GetComponent<Shelter>() != null)
+        {
+           Shelter res = collision.gameObject.GetComponent<Shelter>();
+            res.MaxResistance -= 1;
+            res.IsDamaged = true;
+            res.TimeSinceDamage = 0;
+            print("Collided");
+            Destroy(gameObject);
+
+        }
+
+        
     }
 
-    protected void OnHazardDestroyed()
+    protected virtual void OnHazardDestroyed()
     {
         //TODO: GameObject should spin for 'spinTime' secs. then disappear
+        
         Destroy(gameObject);
     }
 }

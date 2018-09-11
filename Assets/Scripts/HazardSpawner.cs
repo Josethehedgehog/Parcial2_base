@@ -35,7 +35,7 @@ public class HazardSpawner : MonoBehaviour
     public void Update()
     {
         
-        r = Random.Range(0,2);
+        r = Random.Range(0,hazardTemplate.Length);
     }
 
     private void SpawnEnemy()
@@ -54,6 +54,10 @@ public class HazardSpawner : MonoBehaviour
             if (r == 1)
             {
                 Instantiate(hazardTemplate[1], myCollider.GetPointInVolume(), transform.rotation);
+            }
+            if (r == 2)
+            {
+                Instantiate(hazardTemplate[2], myCollider.GetPointInVolume(), transform.rotation);
             }
         }
     }
