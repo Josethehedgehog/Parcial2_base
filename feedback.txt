@@ -1,0 +1,14 @@
+Feedback
+
+Examen (0.5/5.0)
+ * La implementación entregada no instancia ningún hazard. Tocó reconfigurar.
+ * El disparo de balas no satisface el enunciado.
+ * La implementación de Debris no rota.
+ * No hay implementación de Invader ni APBullet
+ * Los hazard no se destruyen al impactar un shelter, ni le hacen daño.
+ * No hay GameOver cuando el hazard traspasa la  posición del jugador
+
+Bonificación (0.0/0.5)
+ * No hay propuesta para la bonificación.
+
+Total: 0.5 / 5.0
